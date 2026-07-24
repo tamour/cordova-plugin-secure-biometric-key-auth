@@ -1,0 +1,29 @@
+{
+  "name": "cordova-plugin-secure-biometric-key-auth",
+  "version": "1.0.0",
+  "description": "Cordova plugin for OutSystems to generate and use hardware-backed EC P-256 keys protected by Face ID/Touch ID.",
+  "cordova": {
+    "id": "cordova-plugin-secure-biometric-key-auth",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+"keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "biometric",
+    "crypto",
+    "enclave",
+    "keystore",
+    "outsystems",
+    "ios",
+	"android",
+    "biometric",
+    "secure-enclave",
+    "faceid"
+  ],
+  "author": "Tamour Ahmad",
+  "license": "MIT"
+}

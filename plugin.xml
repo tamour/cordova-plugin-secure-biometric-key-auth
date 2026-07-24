@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-secure-biometric-key-auth"
+        version="1.0.0">
+    <name>SecureBiometricKeyAuth</name>
+    <description>Hardware-backed key pair generation and biometric challenge signing for iOS and Android</description>
+    <license>MIT</license>
+    <repo>https://github.com/tamour/cordova-plugin-secure-biometric-key-auth.git</repo>
+
+    <js-module src="www/SecureBiometricKeyAuth.js" name="SecureBiometricKeyAuth">
+        <clobbers target="cordova.plugins.SecureBiometricKeyAuth" />
+    </js-module>
+
+    <!-- iOS Platform -->
+    <platform name="ios">
+        <!-- Usage description of the FaceID, mandatory since iOS 10 -->
+        <preference name="FACEID_USAGE_DESCRIPTION" default="This app uses Face ID to securely authenticate you." />
+        <config-file target="*-Info.plist" parent="NSFaceIDUsageDescription">
+            <string>$FACEID_USAGE_DESCRIPTION</string>
+        </config-file>
+
+        <config-file target="config.xml" parent="/*">
+			<preference name="SwiftVersion" value="5.0" />
+            <feature name="SecureBiometricKeyAuth">
+                <param name="ios-package" value="SecureBiometricKeyAuth" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/SecureBiometricKeyAuth.swift" />
+
+        <framework src="Security.framework" />
+        <framework src="LocalAuthentication.framework" />
+    </platform>
+
+    <!-- Android Platform -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="SecureBiometricKeyAuth">
+                <param name="android-package" value="com.outsystems.biometrickey.SecureBiometricKeyAuth" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+            <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+        </config-file>
+
+        <source-file src="src/android/SecureBiometricKeyAuth.java" target-dir="src/com/outsystems/biometrickey" />
+
+        <!-- MABS 9+ compatible AndroidX Biometric dependency -->
+        <framework src="androidx.biometric:biometric:1.1.0" />
+    </platform>
+</plugin>
