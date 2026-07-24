@@ -56,7 +56,7 @@ Add the repository URL directly to your OutSystems Application Module **Extensib
 
 ## 🚀 API Reference
 
-The plugin exposes the cordova.plugins.SecureBiometricKeyAuth interface. All methods use standard success and error callbacks returning a structured JSON object:
+The plugin exposes the cordova.plugins.SecureBiometricKeyAuth interface. All methods use standard success and error callbacks:
 
 ### 1. `createKeyPair(alias)`
 
